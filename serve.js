@@ -32,13 +32,13 @@ const user_router = require('./routes/users')
 const auth_router = require('./routes/auth')
 
 
-app.get('/save', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'test', 'save.html'))
-})
+// app.get('/save', (req, res) => {
+//     res.sendFile(path.join(process.cwd(), 'test', 'save.html'))
+// })
 
-app.use('/api/todo', todo_router) // no auth used
-app.use('/api/user', user_router) // no auth used
-app.use('/api/auth', auth_router) // no auth used
+// app.use('/api/todo', todo_router) // no auth used
+// app.use('/api/user', user_router) // no auth used
+// app.use('/api/auth', auth_router) // no auth used
 app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.get('/backend', (req, res) => res.send('Hello World!'))
