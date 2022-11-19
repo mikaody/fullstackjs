@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+    <form method='GET' action='/api/todo/'><input type='submit' value='todos'></form>
+    <form method='GET' action='/api/user/'><input type='submit' value='users'></form>
+    <form method='POST' action='/api/user/'><input type='email' name='email'><input type='text' name='password'><input type='submit' value='save'></form><br>
+    <form method='POST' action='/api/auth/login'><input type='email' name='email'><input type='text' name='password'><input type='submit' value='login'></form>
+    <form method='POST' action='/api/auth/verifytoken'><input type='text' name='token'><input type='submit' value='test token'></form>
+</body>
+
+</html>

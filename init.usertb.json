@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "636bbda04ff91f7868e314bb"
+  },
+  "email": "olsan@gmail.com",
+  "password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Imxhc3RUaW1lQ29ubmVjdiOjE2NjgwMDI4MzB9.-R8uW6Za0o47Hni3QPPlJpPM7ZBs7L-Y-JaHshRRDLc"
+},{
+  "_id": {
+    "$oid": "636be3238c92151cc463357e"
+  },
+  "email": "enockrazakamanana@gmail.com",
+  "password": "$2b$10$u5csMtC1pNKrF7aHMO3JZOpOPSicon6s/uv954pDYUkUJtXC0jTJ2"
+}]
