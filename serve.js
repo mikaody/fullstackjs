@@ -66,11 +66,15 @@ app.get('/email/list', (req, res) => {
 
     });
 })
+
+app.get('/email/save', (req, res) => {
+    res.json({ message: 'Sorry you do not have access to this url' })
+})
 app.post('/email/save', (req, res) => {
     const email = req.body
     if (!email) {
         console.log('missing parameter')
-        res.json({ message: 'internal server error' })
+        res.json({ message: 'Sorry, the paramater is required to continue...' })
     } else {
         const { dbo } = require('./db.config')
         const { encryptor } = require('./rsa/encrypt-data')
@@ -80,7 +84,7 @@ app.post('/email/save', (req, res) => {
         };
 
         if (req.body.email.length > 100) {
-            res.status(500).json({ message: "email exceds maximum of memory" })
+            res.status(500).json({ message: "Sorry your email cannot be stored in database because it exceds out of size of memory" })
         }
 
         query.email = encryptor(req.body.email);
@@ -89,10 +93,10 @@ app.post('/email/save', (req, res) => {
 
             if (err) {
                 console.log(err)
-                res.status(500).json({ message: 'Internal server error' })
+                res.status(500).json({ message: 'Sorry for the interruption, we are try to find an issue' })
             };
 
-            res.status(200).json({ message: "email inserted" });
+            res.status(200).json({ message: "Your account email was stored in database successfully" });
 
         });
     }
