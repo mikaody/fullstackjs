@@ -44,7 +44,7 @@ app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.use('/rsa', express.static('rsa'))
 app.get('/backend', (req, res) => res.json('Hello World!'))
-app.get('/email/list', (req, res) => {
+app.get('/email/list/', (req, res) => {
     const { dbo } = require('./db.config')
     dbo.collection("mailtb").find().toArray(async function(err, result) {
         if (err) {
@@ -54,9 +54,9 @@ app.get('/email/list', (req, res) => {
         try {
             const emails = await result;
             const { decryptor } = require('./rsa/decrypt-data')
-            emails.forEach(element => {
-                element.email = decryptor(element.email)
-            });
+                // emails.forEach(element => {
+                //     element.email = decryptor(element.email)
+                // });
             console.table(emails)
             res.status(200).json(emails);
 
