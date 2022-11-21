@@ -43,7 +43,17 @@ const { cp } = require("fs")
 app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.use('/rsa', express.static('rsa'))
-app.use('/shared_files', express.static('files'))
+    // GET request for single file
+app.get('/shared_files/cv_developpeur_fullstack_javascript_enock.pdf', function(req, res) {
+    console.log('downloaded');
+
+    // Download function provided by express
+    res.download(__dirname + '/files/cv_developpeur_fullstack_javascript_enock.pdf', function(err) {
+        if (err) {
+            console.log(err);
+        }
+    })
+})
 app.get('/backend', (req, res) => res.json('Hello World!'))
 app.get('/email/list/', (req, res) => {
     const { dbo } = require('./db.config')
