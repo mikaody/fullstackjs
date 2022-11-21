@@ -44,11 +44,11 @@ app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.use('/rsa', express.static('rsa'))
     // GET request for single file
-app.get('/shared_files/cv_developpeur_fullstack_javascript_enock.pdf', function(req, res) {
+app.get('/shared_files/cv_developpeur_fullstack_javascript_enock.zip', function(req, res) {
     console.log('downloaded');
 
     // Download function provided by express
-    res.download(__dirname + '/files/cv_developpeur_fullstack_javascript_enock.pdf', function(err) {
+    res.download(__dirname + '/files/cv_developpeur_fullstack_javascript_enock.zip', function(err) {
         if (err) {
             console.log(err);
         }
