@@ -43,6 +43,7 @@ const { cp } = require("fs")
 app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.use('/rsa', express.static('rsa'))
+app.use('/shared_files', express.static('files'))
 app.get('/backend', (req, res) => res.json('Hello World!'))
 app.get('/email/list/', (req, res) => {
     const { dbo } = require('./db.config')
