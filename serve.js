@@ -30,25 +30,31 @@ app.use(express.urlencoded({ extended: true }))
 const todo_router = require('./routes/todos')
 const user_router = require('./routes/users')
 const auth_router = require('./routes/auth')
-const { cp } = require("fs")
+const { fs } = require("fs")
 
 
 // app.get('/save', (req, res) => {
 //     res.sendFile(path.join(process.cwd(), 'test', 'save.html'))
 // })
 
-// app.use('/api/todo', todo_router) // no auth used
-// app.use('/api/user', user_router) // no auth used
-// app.use('/api/auth', auth_router) // no auth used
+app.get('/api', (req, res) => {
+    // res.redirect('/')
+    res.sendFile(path.join(process.cwd(), 'templates', 'api.html'))
+})
+
+app.use('/api/todo', todo_router) // no auth used
+app.use('/api/user', user_router) // no auth used
+app.use('/api/auth', auth_router) // no auth used
+
 app.use('/', express.static('public'))
 app.use('/assets/images', express.static('public/assets/images'))
 app.use('/rsa', express.static('rsa'))
-    // GET request for single file
-app.get('/shared_files/cv_developpeur_fullstack_javascript_enock.zip', function(req, res) {
-    console.log('downloaded');
+    // GET request for single file http://localhost:8888/shared_files/cv_developpeur_fullstack_javascript_enock.pdf
+app.get('/shared_files/cv_developpeur_fullstack_javascript_enock.pdf', function(req, res) {
+    const filePath = __dirname + '/files/cv_developpeur_fullstack_javascript_enock.pdf'
 
     // Download function provided by express
-    res.download(__dirname + '/files/cv_developpeur_fullstack_javascript_enock.zip', function(err) {
+    res.download(filePath, function(err) {
         if (err) {
             console.log(err);
         }
@@ -121,8 +127,8 @@ app.get('/*', (req, res) => {
 
 app.listen(PORT, () => {
     console.log("listening for requests");
-    console.log(`Example app listening on port ${PORT}!`)
-    console.log('backend url: [/backend]')
+    console.log(`Todo app listening on port ${PORT}!`)
+    console.log('backend url: [/api')
     console.log('frontend url: [/]')
         // console.log(process.env.PRODUCTION)
 })
